@@ -9,14 +9,11 @@ const routes: RouteConfig[] = [
     name: 'Home',
     component: async (): Promise<typeof import('../pages/Home.vue')> => import(/* webpackChunkName: "home" */ '../pages/Home.vue'),
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  // },
+  {
+    path: '/sign-in',
+    name: 'SignIn',
+    component: async (): Promise<typeof import('../pages/Auth/SignIn.vue')> => import(/* webpackChunkName: "signin" */ '../pages/Auth/SignIn.vue'),
+  },
 ];
 
 const router = new VueRouter({

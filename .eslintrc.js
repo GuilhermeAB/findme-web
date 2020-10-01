@@ -20,7 +20,7 @@ module.exports = {
   settings: {
     'import/resolver': {
         node: {
-            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
         },
         webpack: {
             config: require.resolve('@vue/cli-service/webpack.config.js'),

@@ -1,13 +1,18 @@
 <template>
-  <v-container fluid class='primary'>
-    <h1>a</h1>
+  <v-container fluid>
+    <v-app-bar dark color='primary' app>
+      <label>LOGO</label>
+      <v-spacer />
+      <app-bar-signin />
+    </v-app-bar>
   </v-container>
 </template>
 
-<script lang="ts">
-  import Vue from 'vue';
-
-  export default Vue.extend({
+<script>
+  export default {
     name: 'Home',
-  });
+    components: {
+      AppBarSignin: () => import('../components/Core/AppBarSignin'),
+    },
+  };
 </script>

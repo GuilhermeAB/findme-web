@@ -7,8 +7,9 @@ import vuetify from './plugins/vuetify';
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  vuetify,
+  router: router,
+  store: store,
+  vuetify: vuetify,
+  // eslint-disable-next-line
   render: (h) => h(App),
 }).$mount('#app');
