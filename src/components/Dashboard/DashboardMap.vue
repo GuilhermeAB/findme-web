@@ -2,8 +2,8 @@
   <GmapMap
     :center='{lat: -25.389391, lng: -49.238710}'
     :zoom='14'
-    map-type-id='terrain'
-    style='width: 100%; height: 800px'
+    map-type-id='roadmap'
+    style='width: 100%; height: 850px'
   >
     <GmapMarker
       v-for='(m, index) in markers'

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-snackbar v-model='isVisible' timeout='-1' color='success'>
+    <v-snackbar v-model='snackbarIsVisible' timeout='-1' color='success'>
       {{$t('REPORT_MISSING_PERSON')}}
 
       <template v-slot:action='{ attrs }'>
@@ -24,16 +24,18 @@
     },
     data: function () {
       return {
-        isVisible: true,
+        snackbarIsVisible: !this.dialogIsVisible,
         dialogIsVisible: false,
       };
     },
     methods: {
       newReport: function () {
         this.dialogIsVisible = true;
+        this.snackbarIsVisible = false;
       },
       closeNewReportDialog: function () {
         this.dialogIsVisible = false;
+        this.snackbarIsVisible = true;
       },
     },
   };

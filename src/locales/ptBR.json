@@ -15,5 +15,7 @@
   "NEW": "Novo",
   "BIRTH_DATE": "Data de nascimento",
   "DISAPPEARANCE_DATE": "Data de desaparecimento",
-  "GENDER": "Gênero"
+  "GENDER": "Gênero",
+  "LAST_SEEN_PLACE": "Último lugar visto",
+  "SAVE": "Salvar"
 }

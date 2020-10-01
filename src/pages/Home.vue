@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid>
-    <v-app-bar dark color='primary' app>
+  <v-container fluid class='pa-0'>
+    <v-app-bar dark fixed color='primary' app>
       <label>LOGO</label>
       <v-spacer />
       <app-bar-sign-in />
