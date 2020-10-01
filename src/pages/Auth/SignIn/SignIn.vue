@@ -19,7 +19,7 @@
         />
       </v-form>
 
-      <v-btn :disabled='!formIsValid' block color='primary' class='mt-3'>
+      <v-btn :disabled='!formIsValid' block color='primary' class='mt-3' @click='signin'>
         {{$t('SIGNIN')}}
       </v-btn>
     </v-card-text>
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'SignIn',
     data: function () {
@@ -64,6 +66,29 @@
       },
       togglePasswordVisibility: function () {
         this.showPassword = !this.showPassword;
+      },
+      signin: async function () {
+        try {
+          const { data } = await axios({
+            url: '/login',
+            baseURL: process.env.VUE_APP_REQUEST_BASE_URL,
+            method: 'POST',
+            responseType: 'json',
+            data: {
+              email: this.user.email,
+              password: this.user.password,
+            },
+          });
+
+          console.log(data);
+          this.$store.commit('setUser', {
+            account: data.account,
+            person: data.person,
+          });
+          this.$emit('signin-in-success');
+        } catch (e) {
+          console.log(e);
+        }
       },
     },
   };

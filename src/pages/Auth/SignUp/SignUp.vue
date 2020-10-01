@@ -28,7 +28,7 @@
         />
       </v-form>
 
-      <v-btn :disabled='!formIsValid' block color='primary' class='mt-2'>
+      <v-btn :disabled='!formIsValid' block color='primary' class='mt-2' @click='signup'>
         {{$t('SIGNUP')}}
       </v-btn>
     </v-card-text>
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'SignUp',
     data: function () {
@@ -60,7 +62,7 @@
         showPassword: false,
         rules: {
           required: (value) => !!value || this.$t('REQUIRED'),
-          passwordMatch: (value) => (value === this.password) || this.$t('PASSWORDS_ENTERED_DO_NOT_MATCH'),
+          passwordMatch: (value) => (value === this.user.password) || this.$t('PASSWORDS_ENTERED_DO_NOT_MATCH'),
         },
         user: {
           name: undefined,
@@ -76,6 +78,26 @@
       },
       togglePasswordVisibility: function () {
         this.showPassword = !this.showPassword;
+      },
+      signup: async function () {
+        try {
+          await axios({
+            url: '/register',
+            baseURL: process.env.VUE_APP_REQUEST_BASE_URL,
+            method: 'POST',
+            responseType: 'json',
+            data: {
+              name: this.user.name,
+              email: this.user.email,
+              password: this.user.password,
+              confirmPassword: this.user.confirmPassword,
+            },
+          });
+
+          this.toggleNewAccount();
+        } catch (e) {
+          console.log(e);
+        }
       },
     },
   };

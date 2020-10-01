@@ -10,5 +10,10 @@
   "CONFIRM_PASSWORD": "Repita sua senha",
   "SIGNUP": "Registrar",
   "PASSWORDS_ENTERED_DO_NOT_MATCH": "Senhas informadas não correspondem",
-  "REQUIRED": "Campo obrigatório"
+  "REQUIRED": "Campo obrigatório",
+  "REPORT_MISSING_PERSON": "Reportar pessoa desaparecida",
+  "NEW": "Novo",
+  "BIRTH_DATE": "Data de nascimento",
+  "DISAPPEARANCE_DATE": "Data de desaparecimento",
+  "GENDER": "Gênero"
 }

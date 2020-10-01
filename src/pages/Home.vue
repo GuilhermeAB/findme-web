@@ -3,7 +3,8 @@
     <v-app-bar dark color='primary' app>
       <label>LOGO</label>
       <v-spacer />
-      <app-bar-signin />
+      <app-bar-sign-in />
+      <report-missing-person />
     </v-app-bar>
   </v-container>
 </template>
@@ -12,7 +13,10 @@
   export default {
     name: 'Home',
     components: {
-      AppBarSignin: () => import('../components/Core/AppBarSignin'),
+      AppBarSignIn: () => import('../components/Core/AppBarSignin'),
+      ReportMissingPerson: () => import('../components/ReportMissingPerson/ReportMissingPerson'),
+    },
+    methods: {
     },
   };
 </script>
