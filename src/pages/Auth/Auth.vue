@@ -8,7 +8,7 @@
             color='#036358'
           />
 
-          <v-img :max-height='maxHeight' src='https://images.unsplash.com/photo-1546209228-9c8dc7680f87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1901&q=80'>
+          <v-img :max-height='imageMaxHeight' src='https://images.unsplash.com/photo-1546209228-9c8dc7680f87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1901&q=80'>
             <template v-slot:placeholder>
               <v-row
                 class='fill-height ma-0'
@@ -27,14 +27,8 @@
 
       <v-col align-self='center' md='6'>
         <v-row align='center' justify='center'>
-          <v-card flat>
-            <v-card-title>Entrar</v-card-title>
-
-            <v-card-text>
-              <v-text-field label='E-mail' />
-              <v-text-field label='Senha' />
-            </v-card-text>
-          </v-card>
+          <sign-in v-if='!isNewAccount' @toggle-new-account='toggleNewAccount' />
+          <sign-up v-else @toggle-new-account='toggleNewAccount' />
         </v-row>
       </v-col>
     </v-row>
@@ -43,11 +37,21 @@
 
 <script>
   export default {
-    name: 'SignIn',
+    name: 'Auth',
+    components: {
+      SignIn: () => import('./SignIn/SignIn.vue'),
+      SignUp: () => import('./SignUp/SignUp.vue'),
+    },
     data: function () {
       return {
-        maxHeight: window.innerHeight,
+        imageMaxHeight: window.innerHeight,
+        isNewAccount: false,
       };
+    },
+    methods: {
+      toggleNewAccount: function () {
+        this.isNewAccount = !this.isNewAccount;
+      },
     },
   };
 </script>

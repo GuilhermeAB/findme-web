@@ -12,7 +12,7 @@ const routes: RouteConfig[] = [
   {
     path: '/sign-in',
     name: 'SignIn',
-    component: async (): Promise<typeof import('../pages/Auth/SignIn.vue')> => import(/* webpackChunkName: "signin" */ '../pages/Auth/SignIn.vue'),
+    component: async (): Promise<typeof import('../pages/Auth/Auth.vue')> => import(/* webpackChunkName: "signin" */ '../pages/Auth/Auth.vue'),
   },
 ];
 

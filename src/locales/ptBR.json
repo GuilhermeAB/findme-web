@@ -1,0 +1,14 @@
+{
+  "EMAIL": "E-mail",
+  "PASSWORD": "Senha",
+  "SIGNIN": "Entrar",
+  "WELCOME_BACK": "Bem-vindo de volta",
+  "DONT_HAVE_AN_ACCOUNT": "Não tem uma conta?",
+  "NEW_ACCOUNT": "Criar nova conta",
+  "ALREADY_HAVE_AN_ACCOUNT": "Já possui uma conta?",
+  "NAME": "Nome",
+  "CONFIRM_PASSWORD": "Repita sua senha",
+  "SIGNUP": "Registrar",
+  "PASSWORDS_ENTERED_DO_NOT_MATCH": "Senhas informadas não correspondem",
+  "REQUIRED": "Campo obrigatório"
+}
