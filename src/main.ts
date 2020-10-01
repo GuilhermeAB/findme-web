@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import * as VueGoogleMaps from 'vue2-google-maps';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import App from './App.vue';
 import router from './router';
@@ -39,6 +40,14 @@ axios.interceptors.response.use((response: AxiosResponse) => {
     handleRequestResponseMessages(error.response.data.messages);
   }
   throw new Error(error.message);
+});
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_MAPS_API_KEY,
+    libraries: 'places',
+  },
+  installComponents: true,
 });
 
 new Vue({

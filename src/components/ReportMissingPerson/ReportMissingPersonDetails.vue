@@ -80,7 +80,25 @@
           <v-select v-model='person.gender' :label='$t("GENDER")' />
         </v-col>
 
-        <v-col sm='12' md='6' />
+        <v-col sm='12' md='6'>
+          <v-row>
+            <GmapMap
+              :center='{lat: -25.389391, lng: -49.238710}'
+              :zoom='14'
+              map-type-id='terrain'
+              style='width: 100%; height: 500px'
+            >
+              <GmapMarker
+                v-for='(m, index) in markers'
+                :key='index'
+                :position='m.position'
+                :clickable='true'
+                :draggable='true'
+                @click='center=m.position'
+              />
+            </GmapMap>
+          </v-row>
+        </v-col>
       </v-row>
     </v-container>
   </v-card>
@@ -101,6 +119,8 @@
         },
         menuBirthDateModel: false,
         menuDisappearanceDateModel: false,
+        markers: [],
+        center: undefined,
       };
     },
     watch: {
