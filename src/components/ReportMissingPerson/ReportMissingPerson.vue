@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-snackbar v-model='snackbarIsVisible' timeout='-1' color='success'>
+    <v-snackbar v-model='snackbarIsVisible' absolute timeout='-1' color='success'>
       {{$t('REPORT_MISSING_PERSON')}}
 
       <template v-slot:action='{ attrs }'>
