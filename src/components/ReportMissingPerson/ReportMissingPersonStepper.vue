@@ -117,13 +117,16 @@
       save: async function () {
         try {
           try {
+            const fileData = new FormData();
+            fileData.append('file', this.personImage);
+
             await axios({
               url: '/save-missing-person',
               baseURL: process.env.VUE_APP_REQUEST_BASE_URL,
               method: 'POST',
               responseType: 'json',
               withCredentials: true,
-              data: this.personImage,
+              data: fileData,
               params: {
                 name: this.person.name,
                 birthDate: this.person.birthDate,

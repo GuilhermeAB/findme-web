@@ -38,12 +38,11 @@
 
         this.markers = [];
         list.forEach((item) => {
-          console.log(item);
           try {
             if (item.lat_long) {
               this.markers.push({
                 position: JSON.parse(item.lat_long),
-                icon: 'https://images.unsplash.com/photo-1601511086638-a6d6946ed7fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+                icon: `${process.env.VUE_APP_REQUEST_BASE_URL}file?name=${item.imageList[0].name}`,
               });
             }
           } catch (e) {
