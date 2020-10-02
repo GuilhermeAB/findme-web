@@ -17,5 +17,13 @@
   "DISAPPEARANCE_DATE": "Data de desaparecimento",
   "GENDER": "Gênero",
   "LAST_SEEN_PLACE": "Selecione no mapa o último lugar onde foi visto",
-  "SAVE": "Salvar"
+  "SAVE": "Salvar",
+  "PERSON_DETAILS": "Dados do desaparecido",
+  "PERSON_IMAGE": "Imagem",
+  "LOCATION": "Localização",
+  "MISSING_PERSON_DETAILS": "Detalhes (Características, roupas, apelido, etc)",
+  "NEXT": "Avançar",
+  "PREVIOUS_STEP": "Voltar",
+  "SELECT_IMAGE": "Selecionar imagem",
+  "SEND": "Enviar"
 }
