@@ -190,9 +190,6 @@
       },
       save: async function () {
         try {
-          console.log(this.person);
-          console.log(JSON.stringify(this.markers[0].position));
-
           try {
             await axios({
               url: '/save-missing-person',
@@ -200,7 +197,7 @@
               method: 'POST',
               responseType: 'json',
               withCredentials: true,
-              data: {
+              params: {
                 name: this.person.name,
                 birthDate: this.person.birthDate,
                 disappearanceDate: this.person.disappearanceDate,
