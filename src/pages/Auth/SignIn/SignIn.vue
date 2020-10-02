@@ -78,6 +78,7 @@
               email: this.user.email,
               password: this.user.password,
             },
+            withCredentials: true,
           });
 
           console.log(data);

@@ -11,7 +11,7 @@
     </v-snackbar>
 
     <v-dialog v-model='dialogIsVisible' fullscreen>
-      <report-missing-person-details @close='closeNewReportDialog' />
+      <report-missing-person-details v-if='dialogIsVisible' @close='closeNewReportDialog' />
     </v-dialog>
   </div>
 </template>

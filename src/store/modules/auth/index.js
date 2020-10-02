@@ -31,7 +31,7 @@ const authModule = {
   },
   getters: {
     hasUser: function (state) {
-      return state.user && state.user.account.id;
+      return !!(state.user && state.user.account.id);
     },
     getUser: function (state) {
       return state.user;

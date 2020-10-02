@@ -24,7 +24,13 @@
                 <v-row justify='center' align='center'>
                   <label class='caption'>Imagem randômica temporária (<a href='https://github.com/marak/Faker.js/' target='_blank'>Faker</a>)</label>
                 </v-row>
-                <v-text-field v-model='person.name' :label='$t("NAME")' append-icon='mdi-account' />
+
+                <v-text-field
+                  v-model='person.name'
+                  :label='$t("NAME")'
+                  append-icon='mdi-account'
+                  clearable
+                />
 
                 <v-menu
                   ref='menuBirthDateRef'
@@ -56,6 +62,7 @@
                 <v-menu
                   ref='menuDisappearanceDateRef'
                   v-model='menuDisappearanceDateModel'
+                  :disabled='!person.birthDate'
                   :close-on-content-click='false'
                   transition='scale-transition'
                   offset-y
@@ -66,6 +73,7 @@
                       v-model='person.disappearanceDate'
                       :label='$t("DISAPPEARANCE_DATE")'
                       append-icon='mdi-calendar'
+                      :disabled='!person.birthDate'
                       readonly
                       v-bind='attrs'
                       v-on='on'
@@ -74,13 +82,21 @@
                   <v-date-picker
                     ref='disappearanceDatePickerRef'
                     v-model='person.disappearanceDate'
+                    :disabled='!person.birthDate'
                     :max='new Date().toISOString().substr(0, 10)'
-                    min='1930-01-01'
+                    :min='person.birthDate ? person.birthDate : "1930-01-01"'
                     @change='saveDisappearanceDate'
                   />
                 </v-menu>
 
-                <v-select v-model='person.gender' :label='$t("GENDER")' />
+                <v-select
+                  v-model='person.gender'
+                  :items='genderList'
+                  item-text='description'
+                  item-value='id'
+                  :label='$t("GENDER")'
+                  clearable
+                />
               </v-col>
             </v-row>
           </v-container>
@@ -122,6 +138,7 @@
 
 <script>
   import faker from 'faker';
+  import axios from 'axios';
 
   export default {
     name: 'ReportMissingPersonDetails',
@@ -132,6 +149,7 @@
           birthDate: undefined,
           disappearanceDate: undefined,
           gender: undefined,
+          details: undefined,
         },
         menuBirthDateModel: false,
         menuDisappearanceDateModel: false,
@@ -139,6 +157,7 @@
         center: undefined,
         windowMaxHeight: window.innerHeight - 170,
         mapCenter: { lat: -25.389391, lng: -49.238710 },
+        genderList: [],
       };
     },
     watch: {
@@ -152,9 +171,7 @@
       },
     },
     mounted: function () {
-      // this.$refs.mapRef.$mapPromise.then((map) => {
-      //   map.panTo({ lat: 1.38, lng: 103.80 });
-      // });
+      this.getGenderList();
     },
     computed: {
       getRandomPersonImage: function () {
@@ -173,7 +190,30 @@
       },
       save: async function () {
         try {
-          // ====
+          console.log(this.person);
+          console.log(JSON.stringify(this.markers[0].position));
+
+          try {
+            await axios({
+              url: '/save-missing-person',
+              baseURL: process.env.VUE_APP_REQUEST_BASE_URL,
+              method: 'POST',
+              responseType: 'json',
+              withCredentials: true,
+              data: {
+                name: this.person.name,
+                birthDate: this.person.birthDate,
+                disappearanceDate: this.person.disappearanceDate,
+                genderId: this.person.gender,
+                details: this.person.details,
+                latLong: this.markers && this.markers[0] ? JSON.stringify(this.markers[0].position || '') : undefined,
+              },
+            });
+
+            this.close();
+          } catch (e) {
+            console.log(e);
+          }
         } catch (e) {
           console.log(e);
         }
@@ -181,6 +221,21 @@
       mapClick: function (event) {
         this.mapCenter = event.latLng;
         this.markers[0] = { position: event.latLng };
+      },
+      getGenderList: async function () {
+        try {
+          const { data } = await axios({
+            url: '/get-genders',
+            baseURL: process.env.VUE_APP_REQUEST_BASE_URL,
+            method: 'GET',
+            responseType: 'json',
+            withCredentials: true,
+          });
+
+          this.genderList = data.list;
+        } catch (e) {
+          console.log(e);
+        }
       },
     },
   };

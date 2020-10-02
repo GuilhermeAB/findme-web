@@ -57,5 +57,5 @@ new Vue({
   i18n: i18n,
 
   // eslint-disable-next-line
-  render: (h) => h(App)
+  render: (h: any) => h(App)
 }).$mount('#app');
