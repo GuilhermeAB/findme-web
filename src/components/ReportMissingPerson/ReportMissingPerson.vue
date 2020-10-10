@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-snackbar v-model='snackbarIsVisible' absolute timeout='-1' color='success'>
+    <v-snackbar v-model='snackbarIsVisible' absolute timeout='-1' color='primary'>
       {{$t('REPORT_MISSING_PERSON')}}
 
       <template v-slot:action='{ attrs }'>
-        <v-btn text color='primary' v-bind='attrs' @click='newReport'>
+        <v-btn text dark v-bind='attrs' @click='newReport'>
           {{$t('NEW')}}
         </v-btn>
       </template>

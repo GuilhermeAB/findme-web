@@ -1,7 +1,9 @@
 <template>
   <v-container fluid class='pa-0'>
-    <v-app-bar dark fixed color='primary' app>
-      <label>LOGO</label>
+    <v-app-bar dark fixed color='#fff' elevation='2' app>
+      <v-avatar size='170'>
+        <v-img :src='require("../assets/logo.svg")' />
+      </v-avatar>
       <v-spacer />
       <app-bar-sign-in />
     </v-app-bar>

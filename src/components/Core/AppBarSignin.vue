@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-btn color='primary' @click='goToLogin'>
-      Entrar
+    <v-btn text color='primary' @click='goToLogin'>
+      {{$t('SIGNIN')}}
     </v-btn>
   </div>
 </template>
