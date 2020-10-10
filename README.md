@@ -6,6 +6,10 @@
 Find Me é um projeto de código aberto para auxiliar na busca de pessoas desaparecidas. O proposito da plataforma é permitir que qualquer um consiga anunciar desaparecidos, além de se comprometer em entregar o anuncio para o máximo de pessoas possíveis na região aonde o desaparecido foi visto pela última vez.
 </p>
 
+<p align="center">
+  <a href="https://github.com/GuilhermeAB/findme-node" target="_blank">Back-end do projeto</a>
+</p>
+
 <h3 align="center">Tecnologias utilizadas</h3>
 
 <p align="center">
