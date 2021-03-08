@@ -81,7 +81,6 @@
             withCredentials: true,
           });
 
-          console.log(data);
           this.$store.commit('setUser', {
             account: data.account,
             person: data.person,

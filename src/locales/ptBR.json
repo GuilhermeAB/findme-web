@@ -1,7 +1,9 @@
 {
   "EMAIL": "E-mail",
+  "PROFILE": "Perfil",
   "PASSWORD": "Senha",
   "SIGNIN": "Entrar",
+  "SIGNOUT": "Desconectar",
   "WELCOME_BACK": "Bem-vindo de volta",
   "DONT_HAVE_AN_ACCOUNT": "Não tem uma conta?",
   "NEW_ACCOUNT": "Criar nova conta",

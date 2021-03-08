@@ -12,7 +12,7 @@
   export default {
     name: 'App',
     mounted: function () {
-      this.$store.dispatch('loadLocalStorageUser');
+      this.$store.dispatch('getLoggedUser');
     },
   };
 </script>

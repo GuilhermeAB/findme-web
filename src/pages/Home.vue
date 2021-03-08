@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class='pa-0'>
-    <v-app-bar dark fixed color='#fff' elevation='2' app>
+    <v-app-bar fixed color='#fff' elevation='2' app>
       <v-avatar size='170'>
         <v-img :src='require("../assets/logo.svg")' />
       </v-avatar>
